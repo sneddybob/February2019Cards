@@ -22,7 +22,7 @@ namespace February2019Cards
             deck.Deal();
 
             
-           // Console.WriteLine($"This is the first DECK: {deck}");
+            //Console.WriteLine($"This is the first DECK: {deck}");
 
             Deck otherDeck = new Deck();
 
