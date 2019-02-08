@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Linq;
+using February2019Cards;
 
 namespace February2019Cards
 {
     public class Program
     {
+        public object Deck { get; private set; }
+
         public static void Main(string[] args)
         {
             //Here's a comment.
@@ -13,14 +16,31 @@ namespace February2019Cards
             //Here is Bob's comment.
             Deck deck = new Deck();
 
+
             deck.Shuffle();
-            Console.WriteLine(deck);
+
+            deck.Deal();
+
+            
+           // Console.WriteLine($"This is the first DECK: {deck}");
 
             Deck otherDeck = new Deck();
+
             otherDeck.Shuffle();
 
-            Console.WriteLine(otherDeck);
+            //Console.WriteLine($"This is the second DECK: {otherDeck}");
+
+           // deck.Hand();
+
+           // Console.WriteLine(deck);
+
             Console.ReadLine();
+
+            
+
+           
         }
+        
+
     }
 }

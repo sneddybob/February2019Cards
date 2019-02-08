@@ -6,6 +6,8 @@ namespace February2019Cards
 {
     public class Deck
     {
+        //internal static string[] deck;
+
         //This is a special type of method called a constructor.
         //it is run every time you create a deck of cards
         public Deck()
@@ -36,13 +38,47 @@ namespace February2019Cards
                 Card temp = this.Cards[position1];
                 this.Cards[position1] = this.Cards[position2];
                 this.Cards[position2] = temp;
+                
+
+
+            }
+        }
+        public void Deal()
+        {
+            List<Card> hand1 = new List<Card>();
+            List<Card> hand2 = new List<Card>();
+
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    hand1.Add(Cards[i]);
+
+                }
+                else
+                {
+                    hand2.Add(Cards[i]);
+                }
+               
+            }
+            foreach (var item in hand1)
+            {
+                Console.WriteLine($"Your Hand has a {item}.");
+            }
+            foreach (var item in hand2)
+            {
+                Console.WriteLine($"Your Opponent has a {item}.");
             }
         }
 
+
         public override string ToString()
         {
-            return string.Join(",", Cards.Select(x => x.ToString()));
+            return string.Join(", ", Cards.Select(x => x.ToString()));
         }
+        
+
 
     }
 
