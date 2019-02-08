@@ -114,15 +114,16 @@ namespace February2019Cards
                 Console.WriteLine($"These are your Wins: {yourWins}.");
                 Console.WriteLine($"These are your Opponent's Wins: {oppWins}.");
                 Console.WriteLine($"These are your ties: {ties}.");
-                if (yourWins > oppWins)
-                {
-                    Console.WriteLine("Congrats you won!");
-                }
-                else
-                {
-                    Console.WriteLine("Sorry you lost!");
-                }
+                
 
+            }
+            if (yourWins > oppWins)
+            {
+                Console.WriteLine("Congrats you won!");
+            }
+            else
+            {
+                Console.WriteLine("Sorry you lost!");
             }
         }
 
