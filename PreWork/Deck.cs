@@ -87,28 +87,76 @@ namespace February2019Cards
             int indexpos = 0;
             
 
+            //this is for war
+            //while (indexpos < 26)
+            //{
+            //    int evalYourCard = hand1[indexpos].Score;
+            //    int evalOppCard = hand2[indexpos].Score;
+            //    if (evalYourCard > evalOppCard)
+            //    {
+            //        Console.WriteLine($"You have a {hand1[indexpos]} and your Opponent has a {hand2[indexpos]}, you win.");
+            //        yourWins++;
+            //        indexpos++;
+            //    }
+            //    else if(evalOppCard == evalYourCard)
+            //    {
+            //        Console.WriteLine($"You have a {hand1[indexpos]} and your Opponent has a {hand2[indexpos]}, you Tie.");
+            //        ties++;
+            //        indexpos++;
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"You have a {hand1[indexpos]} and your Opponent has a {hand2[indexpos]}, you Lose.");
+            //        oppWins++;
+            //        indexpos++;
+            //    }
+                
+            //    Console.WriteLine($"These are your Wins: {yourWins}.");
+            //    Console.WriteLine($"These are your Opponent's Wins: {oppWins}.");
+            //    Console.WriteLine($"These are your ties: {ties}.");
+                
 
-            while (indexpos < 26)
+            //}
+            //if (yourWins > oppWins)
+            //{
+            //    Console.WriteLine("Congrats you won!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Sorry you lost!");
+            //}
+        //this is for 5 card stud
+         while (indexpos< 21)
             {
-                int evalYourCard = hand1[indexpos].Score;
-                int evalOppCard = hand2[indexpos].Score;
-                if (evalYourCard > evalOppCard)
+                int evalYourHand = hand1[indexpos].Score + hand1[indexpos+1].Score + hand1[indexpos+2].Score 
+                    + hand1[indexpos+3].Score + hand1[indexpos +4].Score;
+                int evalOppHand = hand2[indexpos].Score + hand2[indexpos + 1].Score + hand2[indexpos + 2].Score 
+                    + hand2[indexpos+3].Score + hand2[indexpos+4].Score;
+                   
+                if (evalYourHand > evalOppHand)
                 {
-                    Console.WriteLine($"You have a {hand1[indexpos]} and your Opponent has a {hand2[indexpos]}, you win.");
+                    Console.WriteLine($"You have a {hand1[indexpos]}, a {hand1[indexpos+1]}, a {hand1[indexpos+2]}, " +
+                        $"a {hand1[indexpos+3]}, and a {hand1[indexpos+4]} and your Opponent has a {hand2[indexpos]}, " +
+                        $"a {hand2[indexpos + 1]}, a {hand2[indexpos + 2]}, a {hand2[indexpos + 3]}, and a {hand2[indexpos+4]} you win.");
+
                     yourWins++;
-                    indexpos++;
+                    indexpos+=5;
                 }
-                else if(evalOppCard == evalYourCard)
+                else if(evalOppHand == evalYourHand)
                 {
-                    Console.WriteLine($"You have a {hand1[indexpos]} and your Opponent has a {hand2[indexpos]}, you Tie.");
+                    Console.WriteLine($"You have a {hand1[indexpos]}, a {hand1[indexpos + 1]}, a {hand1[indexpos + 2]}, " +
+                        $"a {hand1[indexpos + 3]}, and a {hand1[indexpos + 4]} and your Opponent has a {hand2[indexpos]}, " +
+                        $"a {hand2[indexpos + 1]}, a {hand2[indexpos + 2]}, a {hand2[indexpos + 3]}, and a {hand2[indexpos + 4]} you tie.");
                     ties++;
-                    indexpos++;
+                    indexpos+=5;
                 }
                 else
                 {
-                    Console.WriteLine($"You have a {hand1[indexpos]} and your Opponent has a {hand2[indexpos]}, you Lose.");
+                    Console.WriteLine($"You have a {hand1[indexpos]}, a {hand1[indexpos + 1]}, a {hand1[indexpos + 2]}, " +
+                        $"a {hand1[indexpos + 3]}, and a {hand1[indexpos + 4]} and your Opponent has a {hand2[indexpos]}, " +
+                        $"a {hand2[indexpos + 1]}, a {hand2[indexpos + 2]}, a {hand2[indexpos + 3]}, and a {hand2[indexpos + 4]} you lose.");
                     oppWins++;
-                    indexpos++;
+                    indexpos+=5;
                 }
                 
                 Console.WriteLine($"These are your Wins: {yourWins}.");

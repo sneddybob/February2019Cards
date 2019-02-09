@@ -20,7 +20,7 @@ namespace February2019Cards
 
         public override string ToString()
         {
-            return $"{Value} of {Suit} with a score of {Score}.";
+            return $"{Value} of {Suit} with a score of {Score}";
         }
     }
 }
