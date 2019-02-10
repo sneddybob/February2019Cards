@@ -17,9 +17,9 @@ namespace February2019Cards
             Deck deck = new Deck();
 
 
-            //deck.Shuffle();
+            deck.Shuffle();
 
-            deck.Deal();
+            deck.FiveDraw();
 
             
             //Console.WriteLine($"This is the first DECK: {deck}");
