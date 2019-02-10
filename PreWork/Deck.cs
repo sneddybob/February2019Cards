@@ -183,8 +183,8 @@ namespace February2019Cards
         // this is for 5 card draw
 
         public void FiveDraw() {
-            
 
+            
             List<Card> hand1 = new List<Card>();
             List<Card> hand2 = new List<Card>();
             int indexpos = 0;
@@ -247,9 +247,16 @@ namespace February2019Cards
                 }
 
             }
+            List<Card> sortedH1 = hand1.OrderByDescending(x=>x.Score).ToList();
+            foreach (var item in sortedH1)
+            {
+                Console.WriteLine(item);
+            }
+            
+            List<Card> sortedH2 = hand2.OrderByDescending(x => x.Score).ToList();
 
             //Determine number of suited cards:
-            foreach (var item in hand1)
+            foreach (var item in sortedH1)
             {
                if(item.Suit == "Clubs")
                 {
@@ -322,11 +329,11 @@ namespace February2019Cards
 
             }
 
-            Console.WriteLine($"You have a {hand1[indexpos]}, a {hand1[indexpos + 1]}, a {hand1[indexpos + 2]}, " +
-             $"a {hand1[indexpos + 3]}, and a {hand1[indexpos + 4]}");
+            Console.WriteLine($"You have a {sortedH1[indexpos]}, a {sortedH1[indexpos + 1]}, a {sortedH1[indexpos + 2]}, " +
+             $"a {sortedH1[indexpos + 3]}, and a {sortedH1[indexpos + 4]}");
             Console.WriteLine("Your hand has {0} Clubs, {1} Hearts, {2} Dimaonds, and {3}, Spades.", clubsH1, heartsH1, diamondsH1, spadesH1);
 
-            foreach (var item in hand2)
+            foreach (var item in sortedH2)
 
             {
                 if (item.Suit == "Clubs")
@@ -400,8 +407,8 @@ namespace February2019Cards
               
             }
             
-            Console.WriteLine($"Your Opponent has a {hand2[indexpos]}, a {hand2[indexpos + 1]}, a {hand2[indexpos + 2]}, " +
-            $"a {hand2[indexpos + 3]}, and a {hand2[indexpos + 4]}");
+            Console.WriteLine($"Your Opponent has a {sortedH2[indexpos]}, a {sortedH2[indexpos + 1]}, a {sortedH2[indexpos + 2]}, " +
+            $"a {sortedH2[indexpos + 3]}, and a {sortedH2[indexpos + 4]}");
             Console.WriteLine("Your Opponent has {0} Clubs, {1} Hearts, {2} Dimaonds, and {3}, Spades.", clubsH2, heartsH2, diamondsH2, spadesH2);
         }
     }
