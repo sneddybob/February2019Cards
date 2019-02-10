@@ -188,24 +188,52 @@ namespace February2019Cards
             List<Card> hand1 = new List<Card>();
             List<Card> hand2 = new List<Card>();
             int indexpos = 0;
-            int hearts = 0;
-            int spades = 0;
-            int diamonds = 0;
-            int clubs = 0;
-            int twos = 0;
-            int threes = 0;
-            int fours = 0;
-            int fives = 0;
-            int sixes = 0;
-            int sevens = 0;
-            int eights = 0;
-            int nines = 0;
-            int tens = 0;
-            int jacks = 0;
-            int queens = 0;
-            int kings = 0;
-            int aces = 0;
-
+            //track suits by hands
+            int heartsH1 = 0;
+            int spadesH1 = 0;
+            int diamondsH1 = 0;
+            int clubsH1 = 0;
+            int heartsH2 = 0;
+            int spadesH2 = 0;
+            int diamondsH2 = 0;
+            int clubsH2 = 0;
+            // track of a kinds by hands
+            int twosH1 = 0;
+            int threesH1 = 0;
+            int foursH1 = 0;
+            int fivesH1 = 0;
+            int sixesH1 = 0;
+            int sevensH1 = 0;
+            int eightsH1 = 0;
+            int ninesH1 = 0;
+            int tensH1 = 0;
+            int jacksH1 = 0;
+            int queensH1 = 0;
+            int kingsH1 = 0;
+            int acesH1 = 0;
+            int twosH2 = 0;
+            int threesH2 = 0;
+            int foursH2 = 0;
+            int fivesH2 = 0;
+            int sixesH2 = 0;
+            int sevensH2 = 0;
+            int eightsH2 = 0;
+            int ninesH2 = 0;
+            int tensH2 = 0;
+            int jacksH2 = 0;
+            int queensH2 = 0;
+            int kingsH2 = 0;
+            int acesH2 = 0;
+            // track winning hands
+            int twoPair = 0;
+            int threeKind = 0;
+            int straight = 0;
+            int flush = 0;
+            int fullHouse = 0;
+            int fourKind = 0;
+            int straightFlush = 0;
+            int yourHandVal = 0;
+            int oppHandVal = 0;
             for (int i = indexpos; i < 10; i++)
             {
                 if (i % 2 == 0)
@@ -225,29 +253,156 @@ namespace February2019Cards
             {
                if(item.Suit == "Clubs")
                 {
-                    clubs += 1;
+                    clubsH1 += 1;
                 }
                 if (item.Suit == "Hearts")
                 {
-                    hearts += 1;
+                    heartsH1 += 1;
                 }
                 if (item.Suit == "Diamonds")
                 {
-                    diamonds += 1;
+                    diamondsH1 += 1;
                 }
                 if (item.Suit == "Spades")
                 {
-                    spades += 1;
+                    spadesH1 += 1;
                 }
-             
-            }
-            Console.WriteLine("Your hand has {0} Clubs, {1} Hearts, {2} Dimaonds, and {3}, Spades.", clubs, hearts, diamonds, spades);
-            foreach (var item in hand2)
-            {
+                if (item.Value == "2")
+                {
+                    twosH1 += 1;
+                }
+                if (item.Value == "3")
+                {
+                   threesH1 += 1;
+                }
+                if (item.Value == "4")
+                {
+                    foursH1 += 1;
+                }
+                if (item.Value == "5")
+                {
+                    fivesH1 += 1;
+                }
+                if (item.Value == "6")
+                {
+                    sixesH1 += 1;
+                }
+                if (item.Value == "7")
+                {
+                    sevensH1 += 1;
+                }
+                if (item.Value == "8")
+                {
+                    eightsH1 += 1;
+                }
+                if (item.Value == "9")
+                {
+                    ninesH1 += 1;
+                }
+                if (item.Value == "10")
+                {
+                    tensH1 += 1;
+                }
+                if (item.Value == "Jacks")
+                {
+                    jacksH1 += 1;
+                }
+                if (item.Value == "Queens")
+                {
+                    queensH1 += 1;
+                }
+                if (item.Value == "Kings")
+                {
+                    kingsH1 += 1;
+                }
+                if (item.Value == "Aces")
+                {
+                    acesH1 += 1;
+                }
 
             }
+
             Console.WriteLine($"You have a {hand1[indexpos]}, a {hand1[indexpos + 1]}, a {hand1[indexpos + 2]}, " +
-        $"a {hand1[indexpos + 3]}, and a {hand1[indexpos + 4]}");
+             $"a {hand1[indexpos + 3]}, and a {hand1[indexpos + 4]}");
+            Console.WriteLine("Your hand has {0} Clubs, {1} Hearts, {2} Dimaonds, and {3}, Spades.", clubsH1, heartsH1, diamondsH1, spadesH1);
+
+            foreach (var item in hand2)
+
+            {
+                if (item.Suit == "Clubs")
+                {
+                    clubsH2 += 1;
+                }
+                if (item.Suit == "Hearts")
+                {
+                    heartsH2 += 1;
+                }
+                if (item.Suit == "Diamonds")
+                {
+                    diamondsH2 += 1;
+                }
+                if (item.Suit == "Spades")
+                {
+                    spadesH2 += 1;
+                }
+                if (item.Value == "2")
+                {
+                    twosH2 += 1;
+                }
+                if (item.Value == "3")
+                {
+                    threesH2 += 1;
+                }
+                if (item.Value == "4")
+                {
+                    foursH2 += 1;
+                }
+                if (item.Value == "5")
+                {
+                    fivesH2 += 1;
+                }
+                if (item.Value == "6")
+                {
+                    sixesH2 += 1;
+                }
+                if (item.Value == "7")
+                {
+                    sevensH2 += 1;
+                }
+                if (item.Value == "8")
+                {
+                    eightsH2 += 1;
+                }
+                if (item.Value == "9")
+                {
+                    ninesH2 += 1;
+                }
+                if (item.Value == "10")
+                {
+                    tensH2 += 1;
+                }
+                if (item.Value == "Jacks")
+                {
+                    jacksH2 += 1;
+                }
+                if (item.Value == "Queens")
+                {
+                    queensH2 += 1;
+                }
+                if (item.Value == "Kings")
+                {
+                    kingsH2 += 1;
+                }
+                if (item.Value == "Aces")
+                {
+                    acesH2 += 1;
+                }
+              
+            }
+            
+            Console.WriteLine($"Your Opponent has a {hand2[indexpos]}, a {hand2[indexpos + 1]}, a {hand2[indexpos + 2]}, " +
+            $"a {hand2[indexpos + 3]}, and a {hand2[indexpos + 4]}");
+            Console.WriteLine("Your Opponent has {0} Clubs, {1} Hearts, {2} Dimaonds, and {3}, Spades.", clubsH2, heartsH2, diamondsH2, spadesH2);
         }
     }
 
