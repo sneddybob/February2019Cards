@@ -189,9 +189,9 @@ namespace February2019Cards
             List<Card> hand2 = new List<Card>();
             int indexpos = 0;
 
-            for (int i = indexpos; i < 10; i++)
+            for (int i = 12; i < 22; i++)
             {
-                if (i <5)
+                if (i%2 ==0)
                 {
                     hand1.Add(Cards[i]);
 
@@ -209,6 +209,19 @@ namespace February2019Cards
 
                 List<int> hand1Values = new List<int>();
                 List<string> hand1Suits = new List<string>();
+                List<int> hand1Elem = new List<int>();
+            foreach (var item in sortedH1)
+            {
+                hand1Elem.Add(item.Score);
+            }
+            int h1Counter = 0;
+            for (int i = 0; i < hand1Elem.Count; i++)
+            {
+                if(hand1Elem[i] == hand1Elem[i+1])
+                {
+                    h1Counter++;
+                }
+            }
             foreach (var item in sortedH1)
             {
                 if (!hand1Suits.Contains(item.Suit))
@@ -226,6 +239,19 @@ namespace February2019Cards
 
                 List<int> hand2Values = new List<int>();
                 List<string> hand2Suits = new List<string>();
+                List<int> hand2Elem = new List<int>();
+            foreach (var item in sortedH2)
+            {
+                hand2Elem.Add(item.Score);
+            }
+            int h2Counter = 0;
+            for (int i = 0; i < hand2Elem.Count; i++)
+            {
+                if (hand2Elem[i] == hand2Elem[i + 1])
+                {
+                    h2Counter++;
+                }
+            }
             foreach (var item in sortedH2)
             {
                 if (!hand2Suits.Contains(item.Suit))
@@ -241,16 +267,59 @@ namespace February2019Cards
                 }
             }
 
-            //for straight flush
+            
             int yourHandVal = 0;
             int oppHandVal = 0;
+            //for straight flush
             if (hand1Suits.Count == 1 && hand1Values[0] - 4 == hand1Values[4])
             {
-                yourHandVal = 100+hand1Values[0];
+                yourHandVal = 1000+hand1Values[0];
             }
             if (hand2Suits.Count == 1 && hand2Values[0] - 4 == hand2Values[4])
             {
-                oppHandVal = 100 + hand2Values[0];
+                oppHandVal = 1000 + hand2Values[0];
+            }
+            
+            //for four of a kind
+
+            else if (hand1Suits.Count == 4 && hand1Values.Count == 2 && h1Counter == 4)
+            {
+                yourHandVal = 900 + hand1Values[1];
+            }
+
+            else if (hand2Suits.Count == 4 && hand2Values.Count == 2 && h2Counter == 4)
+            {
+                oppHandVal = 900 + hand2Values[1];
+            }
+
+            // for fullhouse
+            else if (hand1Suits.Count == 4 && hand1Values.Count == 2 && h1Counter == 3)
+            {
+                yourHandVal = 800 + hand1Values[0];
+            }
+
+            else if (hand2Suits.Count == 4 && hand2Values.Count == 2 && h2Counter == 3)
+            {
+                oppHandVal = 800 + hand2Values[0];
+            }
+            //for flush
+            else if (hand1Suits.Count == 1)
+            {
+                yourHandVal = 700 + hand1Values[0];
+            }
+
+            else if (hand2Suits.Count == 1)
+            {
+                oppHandVal = 700 + hand2Values[0];
+            }
+            //for straight
+            else if (hand1Values[0] - 4 == hand1Values[4])
+            {
+                yourHandVal = 600 + hand1Values[0];
+            }
+            else if (hand2Values[0] - 4 == hand2Values[4])
+            {
+                oppHandVal = 600 + hand2Values[0];
             }
 
             Console.WriteLine($"You have:\n{sortedH1[indexpos]}\n{sortedH1[indexpos + 1]}\n{sortedH1[indexpos + 2]}\n" +
