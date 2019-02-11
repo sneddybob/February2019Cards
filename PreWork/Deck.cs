@@ -189,7 +189,7 @@ namespace February2019Cards
             List<Card> hand2 = new List<Card>();
             int indexpos = 0;
 
-            for (int i = 12; i < 22; i++)
+            for (int i = 0; i < 10; i++)
             {
                 if (i%2 ==0)
                 {
@@ -215,7 +215,7 @@ namespace February2019Cards
                 hand1Elem.Add(item.Score);
             }
             int h1Counter = 0;
-            for (int i = 0; i < hand1Elem.Count; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if(hand1Elem[i] == hand1Elem[i+1])
                 {
@@ -245,7 +245,7 @@ namespace February2019Cards
                 hand2Elem.Add(item.Score);
             }
             int h2Counter = 0;
-            for (int i = 0; i < hand2Elem.Count; i++)
+            for (int i = 0; i < hand2Elem.Count-1; i++)
             {
                 if (hand2Elem[i] == hand2Elem[i + 1])
                 {
@@ -268,65 +268,121 @@ namespace February2019Cards
             }
 
             
-            int yourHandVal = 0;
-            int oppHandVal = 0;
+            int yourHandVal = hand1Elem[0];
+            int oppHandVal = hand2Elem[0];
             //for straight flush
-            if (hand1Suits.Count == 1 && hand1Values[0] - 4 == hand1Values[4])
+            if (hand1Suits.Count == 1 && (hand1Values[0]+13) - 4 == hand1Values[4]+13)
             {
                 yourHandVal = 1000+hand1Values[0];
             }
-            if (hand2Suits.Count == 1 && hand2Values[0] - 4 == hand2Values[4])
+            if (hand2Suits.Count == 1 && (hand2Values[0]+13) - 4 == hand2Values[4]+13)
             {
                 oppHandVal = 1000 + hand2Values[0];
             }
             
             //for four of a kind
 
-            else if (hand1Suits.Count == 4 && hand1Values.Count == 2 && h1Counter == 4)
+            if (hand1Suits.Count == 4 && hand1Values.Count == 2 && h1Counter == 4)
             {
                 yourHandVal = 900 + hand1Values[1];
             }
 
-            else if (hand2Suits.Count == 4 && hand2Values.Count == 2 && h2Counter == 4)
+            if (hand2Suits.Count == 4 && hand2Values.Count == 2 && h2Counter == 4)
             {
                 oppHandVal = 900 + hand2Values[1];
             }
 
             // for fullhouse
-            else if (hand1Suits.Count == 4 && hand1Values.Count == 2 && h1Counter == 3)
+            if (hand1Suits.Count == 4 && hand1Values.Count == 2 && h1Counter == 3)
             {
                 yourHandVal = 800 + hand1Values[0];
             }
 
-            else if (hand2Suits.Count == 4 && hand2Values.Count == 2 && h2Counter == 3)
+            if (hand2Suits.Count == 4 && hand2Values.Count == 2 && h2Counter == 3)
             {
                 oppHandVal = 800 + hand2Values[0];
             }
             //for flush
-            else if (hand1Suits.Count == 1)
+            if (hand1Suits.Count == 1)
             {
                 yourHandVal = 700 + hand1Values[0];
             }
 
-            else if (hand2Suits.Count == 1)
+            if (hand2Suits.Count == 1)
             {
                 oppHandVal = 700 + hand2Values[0];
             }
             //for straight
-            else if (hand1Values[0] - 4 == hand1Values[4])
+            if ((hand1Values[0]+13) - 4 == hand1Values[4]+13)
             {
                 yourHandVal = 600 + hand1Values[0];
             }
-            else if (hand2Values[0] - 4 == hand2Values[4])
+            if ((hand2Values[0]+13) - 4 == hand2Values[4]+13)
             {
                 oppHandVal = 600 + hand2Values[0];
             }
+
+            //for thrre of a kind
+            if (hand1Values.Count == 3 && h1Counter == 3)
+            {
+                yourHandVal = 500 + hand1Values[2];
+            }
+            if (hand2Values.Count == 3 && h2Counter == 3)
+            {
+                oppHandVal = 500 + hand2Values[2];
+            }
+
+            //for two pair
+            if (hand1Values.Count == 3 && h1Counter == 2)
+            {
+                yourHandVal = 400 + hand1Values[1];
+            }
+            if (hand2Values.Count == 3 && h2Counter == 2)
+            {
+                oppHandVal = 400 + hand2Values[1];
+            }
+
+            //for pair
+            if (h1Counter == 2)
+            {
+                for (int i = 0; i < 6 ; i++)
+                {
+                    if (hand1Elem[i] == hand1Elem[i + 1])
+                    {
+                        yourHandVal += hand1Elem[i];
+                    }
+                }
+            }
+
+            if (h2Counter == 2)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    if (hand2Elem[i] == hand2Elem[i + 1])
+                    {
+                        oppHandVal += hand2Elem[i];
+                    }
+                }
+            }
+            
+
 
             Console.WriteLine($"You have:\n{sortedH1[indexpos]}\n{sortedH1[indexpos + 1]}\n{sortedH1[indexpos + 2]}\n" +
              $"{sortedH1[indexpos + 3]}\n{sortedH1[indexpos + 4]}\nYour hand value is: {yourHandVal}.");
             Console.WriteLine($"\nYour Opponent has:\n{sortedH2[indexpos]}\n{sortedH2[indexpos + 1]}\n{sortedH2[indexpos + 2]}\n" +
             $"{sortedH2[indexpos + 3]}\n{sortedH2[indexpos + 4]}\nTheir hand value is: {oppHandVal}.");
-
+            if (yourHandVal > oppHandVal)
+            {
+                Console.WriteLine("\nYou won!");
+            }
+            if (yourHandVal < oppHandVal)
+            {
+                Console.WriteLine("\nYou Lost!");
+            }
+            if (yourHandVal == oppHandVal)
+            {
+                Console.WriteLine("\nYou Tied!");
+            }
         }
         }
     
