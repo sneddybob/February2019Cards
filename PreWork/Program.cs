@@ -17,7 +17,7 @@ namespace February2019Cards
             Deck deck = new Deck();
 
 
-            deck.Shuffle();
+            //deck.Shuffle();
 
             deck.FiveDraw();
 
